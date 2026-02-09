@@ -6,14 +6,22 @@ output:
     theme: cerulean
 ---
 
-```{r load-packages, warning = FALSE, message=FALSE}
+```{r load-packages, message=FALSE}
 library(tidyverse) 
-remotes::install_github("xmarquez/democracyData")
-```
-
-```{r}
-library(democracyData)
+library(carData)
+data("WVS")
 ```
 
 ### The Goal
 
+Building off of the previous portfolio piece, I have selected more complex data set named "WVS" from the carData package. This data set is a collection of data from the World Values Surveys spanning 1995-1997 in the United States, Australia, Norway, and Sweden. This data set revolves around survey data that is interested in public opinion towards a nation's government. More specifically, researchers surveyed participants on how they viewed government involvement in poverty assistance. Answers span from "Too Little" to Too Much" with a middle option as well. This data set will provide a more complex understanding of public opinion in a wider context. 
+
+I plan to build off of this data set later on but for this portfolio piece, my intention is to limit the scope of the survey data to only particpants in the United States. As the initial data set contains participants from four countries (US, Australia, Norway, and Sweden) I will filter the data to reflect only observations made towards the United States government. 
+
+Additionally, the goal of this portfolio piece is to understand whether age is a significant factor that contributes to public opinion of government action. I will create a visualization to graphs age of participants with how they feel the government handles poverty to visualize any apparent trends. Lastly, I will do the same for gender to see whether this variable contributes to any identity differences in pubic opinion.
+
+### The Data
+
+### The Product
+
+### The Interpretation

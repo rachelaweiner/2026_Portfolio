@@ -378,49 +378,42 @@ $(document).ready(function () {
 
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;xmarquez/democracyData&quot;</span>)</span></code></pre></div>
-<pre><code>## R.methodsS3  (NA    -&gt; 1.8.2   ) [CRAN]
-## R.oo         (NA    -&gt; 1.27.1  ) [CRAN]
-## listenv      (NA    -&gt; 0.10.0  ) [CRAN]
-## globals      (NA    -&gt; 0.19.0  ) [CRAN]
-## vctrs        (0.6.5 -&gt; 0.7.1   ) [CRAN]
-## audio        (NA    -&gt; 0.1-12  ) [CRAN]
-## R.utils      (NA    -&gt; 2.13.0  ) [CRAN]
-## progressr    (NA    -&gt; 0.18.0  ) [CRAN]
-## future.apply (NA    -&gt; 1.20.1  ) [CRAN]
-## future       (NA    -&gt; 1.69.0  ) [CRAN]
-## pbapply      (NA    -&gt; 1.7-4   ) [CRAN]
-## beepr        (NA    -&gt; 2.0     ) [CRAN]
-## dplyr        (1.1.4 -&gt; 1.2.0   ) [CRAN]
-## parallelly   (NA    -&gt; 1.46.1  ) [CRAN]
-## xfun         (0.55  -&gt; 0.56    ) [CRAN]
-## cpp11        (0.5.2 -&gt; 0.5.3   ) [CRAN]
-## timechange   (0.3.0 -&gt; 0.4.0   ) [CRAN]
-## vroom        (1.6.7 -&gt; 1.7.0   ) [CRAN]
-## SimDesign    (NA    -&gt; 2.22    ) [CRAN]
-## dcurver      (NA    -&gt; 0.9.3   ) [CRAN]
-## GPArotation  (NA    -&gt; 2025.3-1) [CRAN]
-## bibtex       (NA    -&gt; 0.5.2   ) [CRAN]
-## lubridate    (1.9.4 -&gt; 1.9.5   ) [CRAN]
-## xml2         (1.5.1 -&gt; 1.5.2   ) [CRAN]
-## here         (NA    -&gt; 1.0.2   ) [CRAN]
-## mirt         (NA    -&gt; 1.45.1  ) [CRAN]
-## RefManageR   (NA    -&gt; 1.4.0   ) [CRAN]
-## countrycode  (NA    -&gt; 1.6.1   ) [CRAN]</code></pre>
-<pre><code>## 
-## The downloaded binary packages are in
-##  /var/folders/9r/7_kwjky50jzghq8rp2n6nmmm0000gn/T//RtmpIuUv0R/downloaded_packages
-## ── R CMD build ─────────────────────────────────────────────────────────────────
-##      checking for file ‘/private/var/folders/9r/7_kwjky50jzghq8rp2n6nmmm0000gn/T/RtmpIuUv0R/remotes11b99666de36e/xmarquez-democracyData-d545929/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/9r/7_kwjky50jzghq8rp2n6nmmm0000gn/T/RtmpIuUv0R/remotes11b99666de36e/xmarquez-democracyData-d545929/DESCRIPTION’
-##   ─  preparing ‘democracyData’:
-##    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-##   ─  checking for LF line-endings in source and make files and shell scripts
-##   ─  checking for empty or unneeded directories
-##   ─  building ‘democracyData_0.6.0.tar.gz’
-##      
-## </code></pre>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;WVS&quot;</span>)</span></code></pre></div>
 <div id="the-goal" class="section level3">
 <h3>The Goal</h3>
+<p>Building off of the previous portfolio piece, I have selected more
+complex data set named “WVS” from the carData package. This data set is
+a collection of data from the World Values Surveys spanning 1995-1997 in
+the United States, Australia, Norway, and Sweden. This data set revolves
+around survey data that is interested in public opinion towards a
+nation’s government. More specifically, researchers surveyed
+participants on how they viewed government involvement in poverty
+assistance. Answers span from “Too Little” to Too Much” with a middle
+option as well. This data set will provide a more complex understanding
+of public opinion in a wider context.</p>
+<p>I plan to build off of this data set later on but for this portfolio
+piece, my intention is to limit the scope of the survey data to only
+particpants in the United States. As the initial data set contains
+participants from four countries (US, Australia, Norway, and Sweden) I
+will filter the data to reflect only observations made towards the
+United States government.</p>
+<p>Additionally, the goal of this portfolio piece is to understand
+whether age is a significant factor that contributes to public opinion
+of government action. I will create a visualization to graphs age of
+participants with how they feel the government handles poverty to
+visualize any apparent trends. Lastly, I will do the same for gender to
+see whether this variable contributes to any identity differences in
+pubic opinion.</p>
+</div>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+</div>
+<div id="the-product" class="section level3">
+<h3>The Product</h3>
+</div>
+<div id="the-interpretation" class="section level3">
+<h3>The Interpretation</h3>
 </div>
 
 

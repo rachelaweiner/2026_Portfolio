@@ -1,5 +1,9 @@
 ---
 title: "About This Website"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cerulean
 ---
 
 My name is Rachel Weiner and I am a senior at Wake Forest University studying psychology and politics & international affairs. Stemming from both academic domains, my research interests lie in the social and behavioral sides of politicization in the United States and the factors driving polarization and division. I have conducted research projects geared towards both investigating this current conflict and finding viable solutions. This has culminated in my senior politics thesis on civic education in both American and Canadian classrooms, aimed at finding the most successful strategies for managing the threats of democratic backsliding and affective polarization. I hope my portfolio can attempt to bridge both psychological methods and current political research to provide a further dive into salient topics of interest. 
