@@ -16,11 +16,56 @@ data("WVS")
 
 Building off of the previous portfolio piece, I have selected more complex data set named "WVS" from the carData package. This data set is a collection of data from the World Values Surveys spanning 1995-1997 in the United States, Australia, Norway, and Sweden. This data set revolves around survey data that is interested in public opinion towards a nation's government. More specifically, researchers surveyed participants on how they viewed government involvement in poverty assistance. Answers span from "Too Little" to Too Much" with a middle option as well. This data set will provide a more complex understanding of public opinion in a wider context. 
 
-I plan to build off of this data set later on but for this portfolio piece, my intention is to limit the scope of the survey data to only particpants in the United States. As the initial data set contains participants from four countries (US, Australia, Norway, and Sweden) I will filter the data to reflect only observations made towards the United States government. 
+I plan to use this data set for a couple of portfolio pieces as I explore the data. For this portfolio piece 2, I want to gain a better understanding of the data within this data set through visualizations of demographic variables encapsulated in the survey data. To do so, I will use bar plots and frequency distributions to understand where the survey data is coming from, who the data surveys, and the general trends across the data. Through this exploration, I will have a greater idea of what this survey wishes to understand and thus how I can continue to work with the data to frame certain questions of my own.
 
-Additionally, the goal of this portfolio piece is to understand whether age is a significant factor that contributes to public opinion of government action. I will create a visualization to graphs age of participants with how they feel the government handles poverty to visualize any apparent trends. Lastly, I will do the same for gender to see whether this variable contributes to any identity differences in pubic opinion.
+Stay tuned in portfolio piece 3 for further investigation.
 
 ### The Data
+
+Firstly, I want to view the data set to get an understanding of the size and characteristics. To do so, I will use both the view function to visualize the data set while aslo using nrow and ncol functions to measure the amount of rows and columns in the data set. 
+```{r}
+view(WVS)
+nrow(WVS)
+ncol(WVS)
+```
+
+In the WVS data set, there are 5381 rows which each represent an individual survey participant. There are also six columns in this data set that represent six variables including poverty, religion, degree, country, age, and gender. 
+
+Each variable is described as followed:
+
+Poverty: “Do you think that what the government is doing for people in poverty in this country is about the right amount, too much, or too little?” (ordered): Too Little, About Right, Too Much.
+Religion: Member of a religion: no or yes.
+Degree: Held a university degree: no or yes.
+Country: Australia, Norway, Sweden, or USA.
+Age: in years.
+Gender: male or female.
+
+Now I want to gauge how many observations are from each country to get an understanding of where the data is coming from. I will now explore some demographic variables.
+
+```{r}
+WVS %>%
+  count(country)
+```
+
+```{r}
+WVS %>%
+  ggplot(data = WVS, mapping = aes(x = country)) +
+  geom_bar()
+```
+
+As visualized in the bar plot above, the greatest number of survey responses comes from Australian participants followed by the United States and then Norway. 
+
+```{r}
+WVS %>%
+  count(gender)
+```
+
+As far as gender differences go, the data set is largely equal in male and female participants. Though there are slightly more responses from female participants than male participants.
+
+```{r}
+WVS %>%
+  count(religion)
+```
 
 ### The Product
 

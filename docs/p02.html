@@ -392,22 +392,69 @@ participants on how they viewed government involvement in poverty
 assistance. Answers span from “Too Little” to Too Much” with a middle
 option as well. This data set will provide a more complex understanding
 of public opinion in a wider context.</p>
-<p>I plan to build off of this data set later on but for this portfolio
-piece, my intention is to limit the scope of the survey data to only
-particpants in the United States. As the initial data set contains
-participants from four countries (US, Australia, Norway, and Sweden) I
-will filter the data to reflect only observations made towards the
-United States government.</p>
-<p>Additionally, the goal of this portfolio piece is to understand
-whether age is a significant factor that contributes to public opinion
-of government action. I will create a visualization to graphs age of
-participants with how they feel the government handles poverty to
-visualize any apparent trends. Lastly, I will do the same for gender to
-see whether this variable contributes to any identity differences in
-pubic opinion.</p>
+<p>I plan to use this data set for a couple of portfolio pieces as I
+explore the data. For this portfolio piece 2, I want to gain a better
+understanding of the data within this data set through visualizations of
+demographic variables encapsulated in the survey data. To do so, I will
+use bar plots and frequency distributions to understand where the survey
+data is coming from, who the data surveys, and the general trends across
+the data. Through this exploration, I will have a greater idea of what
+this survey wishes to understand and thus how I can continue to work
+with the data to frame certain questions of my own.</p>
+<p>Stay tuned in portfolio piece 3 for further investigation.</p>
 </div>
 <div id="the-data" class="section level3">
 <h3>The Data</h3>
+<p>Firstly, I want to view the data set to get an understanding of the
+size and characteristics. To do so, I will use both the view function to
+visualize the data set while aslo using nrow and ncol functions to
+measure the amount of rows and columns in the data set.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">view</span>(WVS)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">nrow</span>(WVS)</span></code></pre></div>
+<pre><code>## [1] 5381</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">ncol</span>(WVS)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>In the WVS data set, there are 5381 rows which each represent an
+individual survey participant. There are also six columns in this data
+set that represent six variables including poverty, religion, degree,
+country, age, and gender.</p>
+<p>Each variable is described as followed:</p>
+<p>Poverty: “Do you think that what the government is doing for people
+in poverty in this country is about the right amount, too much, or too
+little?” (ordered): Too Little, About Right, Too Much. Religion: Member
+of a religion: no or yes. Degree: Held a university degree: no or yes.
+Country: Australia, Norway, Sweden, or USA. Age: in years. Gender: male
+or female.</p>
+<p>Now I want to gauge how many observations are from each country to
+get an understanding of where the data is coming from. I will now
+explore some demographic variables.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">count</span>(country)</span></code></pre></div>
+<pre><code>##     country    n
+## 1 Australia 1874
+## 2    Norway 1127
+## 3    Sweden 1003
+## 4       USA 1377</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> country)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p02_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<p>As visualized in the bar plot above, the greatest number of survey
+responses comes from Australian participants followed by the United
+States and then Norway.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">count</span>(gender)</span></code></pre></div>
+<pre><code>##   gender    n
+## 1 female 2725
+## 2   male 2656</code></pre>
+<p>As far as gender differences go, the data set is largely equal in
+male and female participants. Though there are slightly more responses
+from female participants than male participants.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">count</span>(religion)</span></code></pre></div>
+<pre><code>##   religion    n
+## 1       no  786
+## 2      yes 4595</code></pre>
 </div>
 <div id="the-product" class="section level3">
 <h3>The Product</h3>
