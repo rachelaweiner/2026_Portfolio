@@ -382,7 +382,7 @@ $(document).ready(function () {
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;WVS&quot;</span>)</span></code></pre></div>
 <div id="the-goal" class="section level3">
 <h3>The Goal</h3>
-<p>Building off of the previous portfolio piece, I have selected more
+<p>Building off of the previous portfolio piece, I have selected a more
 complex data set named “WVS” from the carData package. This data set is
 a collection of data from the World Values Surveys spanning 1995-1997 in
 the United States, Australia, Norway, and Sweden. This data set revolves
@@ -396,18 +396,18 @@ of public opinion in a wider context.</p>
 explore the data. For this portfolio piece 2, I want to gain a better
 understanding of the data within this data set through visualizations of
 demographic variables encapsulated in the survey data. To do so, I will
-use bar plots and frequency distributions to understand where the survey
-data is coming from, who the data surveys, and the general trends across
-the data. Through this exploration, I will have a greater idea of what
-this survey wishes to understand and thus how I can continue to work
-with the data to frame certain questions of my own.</p>
+use bar plots and frequency measures to understand where the survey data
+is coming from, who the data surveys, and the general trends across the
+data. Through this exploration, I will have a greater idea of what this
+survey wishes to understand and thus how I can continue to work with the
+data to frame certain questions of my own.</p>
 <p>Stay tuned in portfolio piece 3 for further investigation.</p>
 </div>
 <div id="the-data" class="section level3">
 <h3>The Data</h3>
 <p>Firstly, I want to view the data set to get an understanding of the
 size and characteristics. To do so, I will use both the view function to
-visualize the data set while aslo using nrow and ncol functions to
+visualize the data set while also using nrow and ncol functions to
 measure the amount of rows and columns in the data set.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">view</span>(WVS)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">nrow</span>(WVS)</span></code></pre></div>
@@ -425,9 +425,13 @@ little?” (ordered): Too Little, About Right, Too Much. Religion: Member
 of a religion: no or yes. Degree: Held a university degree: no or yes.
 Country: Australia, Norway, Sweden, or USA. Age: in years. Gender: male
 or female.</p>
-<p>Now I want to gauge how many observations are from each country to
-get an understanding of where the data is coming from. I will now
-explore some demographic variables.</p>
+</div>
+<div id="the-product" class="section level3">
+<h3>The Product</h3>
+<p>To provide a clear understanding of where and from whom this data is
+collected, I will run some simple code to both measure and visualize the
+spread of certain demographics used in this survey data. I will start
+with the countries in which the data was collected.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">count</span>(country)</span></code></pre></div>
 <pre><code>##     country    n
@@ -438,29 +442,95 @@ explore some demographic variables.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> country)) <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="p02_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<p><img src="p02_files/figure-html/plot-country-1.png" alt="" width="672" /></p>
 <p>As visualized in the bar plot above, the greatest number of survey
 responses comes from Australian participants followed by the United
 States and then Norway.</p>
+<p>Next, let’s see about the gender of survey participants.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">count</span>(gender)</span></code></pre></div>
 <pre><code>##   gender    n
 ## 1 female 2725
 ## 2   male 2656</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p02_files/figure-html/plot-gender-1.png" alt="" width="672" /></p>
 <p>As far as gender differences go, the data set is largely equal in
 male and female participants. Though there are slightly more responses
 from female participants than male participants.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">count</span>(religion)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">count</span>(religion)</span></code></pre></div>
 <pre><code>##   religion    n
 ## 1       no  786
 ## 2      yes 4595</code></pre>
-</div>
-<div id="the-product" class="section level3">
-<h3>The Product</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> religion)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p02_files/figure-html/plot-religion-1.png" alt="" width="672" /></p>
+<p>Religion on the other hand is quite an interesting demographic
+variable to measure. As I am unsure of the exact specificity of what the
+survey attributes to being religious, I cannot make substantive claims
+regarding this measure. Though I do find it every interesting that 85%
+of particpants across four different countries responded that they were
+religious.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">count</span>(degree)</span></code></pre></div>
+<pre><code>##   degree    n
+## 1     no 4238
+## 2    yes 1143</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> degree)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p02_files/figure-html/plot-degree-1.png" alt="" width="672" />
+Also very interestingly, the majority of participants, almost 80%, noted
+that they did not have a college degree. I would be interested to learn
+the occupations of the participants and whether this was more specific
+to one country or a general consensus. I might explore this later.</p>
+<p>Lastly, let us investigate the main variable, “poverty”, to guage the
+general idea of what participants are answering to the main survey
+question.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">count</span>(poverty)</span></code></pre></div>
+<pre><code>##       poverty    n
+## 1  Too Little 2708
+## 2 About Right 1862
+## 3    Too Much  811</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> poverty)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p02_files/figure-html/plot-poverty-1.png" alt="" width="672" />
+According to the survey data. The majority of respondents, 50%, noted
+that their government was doing too little for the poverty issue in
+their country. A lesser majority of 35% noted that the government action
+was about right in their country and a small percentage of 15% of
+respondents responded that their country was doing too much. This
+response is quite interesting to me as I am wondering what situations
+might drive participants to respond with this answer.</p>
 </div>
 <div id="the-interpretation" class="section level3">
 <h3>The Interpretation</h3>
+<p>My curiosity and interest in this data set has grown since the
+beginning of this portfolio piece. Having conducted a few simple
+demographic statistics, I am very puzzled and intrigued by some of the
+results interpreted below.</p>
+<p>Based on these calculations, the majority of participants are
+Australian and American though there are decent amounts of Norwegians
+and Swedes as well. The survey consists of a mostly even co-ed
+demographic with almost equal numbers of male and female participants.
+What intrigued me most was that the majority of respondents identify as
+religious and also do not specify having a college degree. I am
+perplexed by this trend and wonder where the poverty question variable
+comes into play with these demographic trends in the data. Additionally,
+with the leading response to the poverty question being “Too Little”, I
+would like to find where the majority of these responses came from in
+terms of country. I will also conduct light research into the time
+period that these surveys were conducted to find events and situations
+that might have contributed to these responses.</p>
+<p>Now that I have a good idea of what this data set consists of and
+what trends exist within the data, I am looking forward to playing
+around with the data set to dive deeper into this investigation of
+public opinion in portfolio pieces to come.</p>
 </div>
 
 
