@@ -1,7 +1,34 @@
 ---
 title: "Portfolio 3"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cerulean
 ---
 
-> The projects should be numbered consecutively (i.e., in the order in which you began them), and should include for each project a description of the goal, the product (computer program, hand graph, computer graph, etc.), the data, and some interpretation. Reports must be reproducible and of high quality in terms of writing, grammar, presentation, etc.
+```{r load-packages, message=FALSE}
+library(tidyverse) 
+library(carData)
+data("WVS")
+```
+
+### The Goal
+
+Building off of the prior portfolio piece, this portfolio piece seeks to dive deeper into public opinion. In the portfolio piece before, I got a good idea of the aparent trends in demographics of the data participants involving country, gender, college degree, and religion. Finally, I also investigated the general consensus regarding the main poverty question of whether respective government's were doing enough for the poverty issue. 
 
 The goal of this portfolio piece is to understand whether age is a significant factor that contributes to public opinion of government action. I will create a visualization to graphs age of participants with how they feel the government handles poverty to visualize any apparent trends. Lastly, I will do the same for gender to see whether this variable contributes to any identity differences in pubic opinion.
+
+### The Data
+
+We are going to need to adjust our data set from the WVS data set. 
+
+### The Product
+
+```{r}
+ggplot(WVS, aes(x = poverty, fill = country)) + 
+  geom_histogram(binwidth = 5000)
+
+```
+
+
+### The Interpretation
