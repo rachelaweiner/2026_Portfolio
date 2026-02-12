@@ -23,11 +23,8 @@ The goal of this portfolio piece is to understand whether age is a significant f
 We are going to need to adjust our data set from the WVS data set. 
 
 ### The Product
-
+This is where
 ```{r}
-ggplot(WVS, aes(x = poverty, fill = country)) + 
-  geom_histogram(binwidth = 5000)
-
 ```
 
 
