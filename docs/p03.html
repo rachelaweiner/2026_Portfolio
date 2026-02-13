@@ -389,20 +389,60 @@ participants involving country, gender, college degree, and religion.
 Finally, I also investigated the general consensus regarding the main
 poverty question of whether respective government’s were doing enough
 for the poverty issue.</p>
-<p>The goal of this portfolio piece is to understand whether age is a
-significant factor that contributes to public opinion of government
-action. I will create a visualization to graphs age of participants with
-how they feel the government handles poverty to visualize any apparent
-trends. Lastly, I will do the same for gender to see whether this
-variable contributes to any identity differences in pubic opinion.</p>
+<p>The goal of this portfolio piece is to understand the trends in
+public opinion of government poverty action by country, specifically in
+the United States. I am going to create a data visualization that
+showcases the survey results of the United States. Additionally, I will
+do this for all three other countries to understand how these countries
+differ in public opinion.</p>
 </div>
 <div id="the-data" class="section level3">
 <h3>The Data</h3>
-<p>We are going to need to adjust our data set from the WVS data
-set.</p>
+<p>We start with the data! The WVS data set is derrived from the carData
+package, viewed below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">view</span>(WVS)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">nrow</span>(WVS)</span></code></pre></div>
+<pre><code>## [1] 5381</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">ncol</span>(WVS)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>The WVS data set comes from a survey collected in the United States,
+Australia, Norway, and Sweden. They received 5381 responses with most
+coming from Australian and American participants.</p>
+<p>The main variable of interest that the researchers intended to
+measure was public opinion of the respective government’s action towards
+dealing with poverty in that country. Participants were asked the given
+question: “Do you think that what the government is doing for people in
+poverty in this country is about the right amount, too much, or too
+little?” to which they could respond: “Too Little”, “About Right”, “Too
+Much”. Other variables accounted for are described below.</p>
+<p>poverty “Do you think that what the government is doing for people in
+poverty in this country is about the right amount, too much, or too
+little?” (ordered): Too Little, About Right, Too Much</p>
+<p>religion Member of a religion: no or yes.</p>
+<p>degree Held a university degree: no or yes.</p>
+<p>country Australia, Norway, Sweden, or USA.</p>
+<p>age in years.</p>
+<p>gender male or female.</p>
+<p>This is a co-ed sample with almost an even distribution of male and
+female participants. Additionally, the data surveys variables such as
+having a college degree and being religious. Age is also accounted for
+in this data set and will be used in future portfolio pieces.</p>
 </div>
 <div id="the-product" class="section level3">
 <h3>The Product</h3>
+<p>To start, here is the visualization produced in portfolio piece one
+that showcases the general trend of responses to the poverty question
+across all participants in all four countries.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>WVS <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> poverty)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p03_files/figure-html/plot-poverty-1.png" alt="" width="672" /></p>
+<p>As shown, the general majority believe their government is doing too
+little for the</p>
+<p>We are going to need to adjust our data set from the WVS data set.
+Firstly, I want to filter the data to only have responses from
+individuals based in the United States in order to guage public opinion
+in the US. I am going to use the filter() function.</p>
 </div>
 <div id="the-interpretation" class="section level3">
 <h3>The Interpretation</h3>
