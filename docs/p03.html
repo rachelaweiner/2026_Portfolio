@@ -378,8 +378,9 @@ $(document).ready(function () {
 
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;WVS&quot;</span>)</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;WVS&quot;</span>)</span></code></pre></div>
 <div id="the-goal" class="section level3">
 <h3>The Goal</h3>
 <p>Building off of the prior portfolio piece, this portfolio piece seeks
@@ -391,10 +392,11 @@ poverty question of whether respective government’s were doing enough
 for the poverty issue.</p>
 <p>The goal of this portfolio piece is to understand the trends in
 public opinion of government poverty action by country, specifically in
-the United States. I am going to create a data visualization that
-showcases the survey results of the United States. Additionally, I will
-do this for all three other countries to understand how these countries
-differ in public opinion.</p>
+the United States. I am going to create data visualizations that
+showcase the survey results of the United States with each of the three
+additional categorical variables in mind, gender, degree, and religion.
+Finally, we will look at how the continuous variable of age influences
+the responses to the poverty question within the United States.</p>
 </div>
 <div id="the-data" class="section level3">
 <h3>The Data</h3>
@@ -438,14 +440,103 @@ across all participants in all four countries.</p>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="p03_files/figure-html/plot-poverty-1.png" alt="" width="672" /></p>
 <p>As shown, the general majority believe their government is doing too
-little for the</p>
+little for the for the poverty issue in their country. To dive further,
+I will investigate whether this is a general trend across specific
+countries in particular or whether this is true across all. I will start
+with the United States to expand upon public opinion in the United
+States from Portfolio piece 1.</p>
 <p>We are going to need to adjust our data set from the WVS data set.
 Firstly, I want to filter the data to only have responses from
-individuals based in the United States in order to guage public opinion
+individuals based in the United States in order to gauge public opinion
 in the US. I am going to use the filter() function.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>WVS_US <span class="ot">&lt;-</span> WVS <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;USA&quot;</span>)</span></code></pre></div>
+<p>Now that I have a new data set with only the USA participants, I am
+going to provide a visualization of the poverty measure.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>WVS_US <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS_US, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> poverty)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p03_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<p>Now this is interesting. The United States does not appear to follow
+the general distribution found among all countries together. While “Too
+Litte” is still the leading answer, “Too Much” follows right behind
+which is different from the collective trend above where “About Right”
+had the second highest amount of responses. This is very interesting not
+only because there is a different distribution but because the two peaks
+are at the extremes of the scale.</p>
+<p>Now I would like to see how this varies across age, gender, degree,
+and relgion.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>WVS_US <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS_US, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> poverty, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p03_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
+<p>Above is a bar plot that graphs responses to the poverty question
+with faceting for gender. As we can see, there is no clear skewing of
+the data based on gender as all participants, regardless of gender were
+split over poverty responses.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>WVS_US <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS_US, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> poverty, <span class="at">fill =</span> degree)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p03_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" /></p>
+<p>Above is a bar plot that graphs responses to the poverty question
+with faceting for whether or not the participant had a college degree.
+As we can see, there is no clear skewing of the data based on gender as
+all participants, regardless of gender were split over poverty
+responses. Though the majority of respondents did not have a degree,
+this did not produce any effect over the responses to the poverty
+question,</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>WVS_US <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS_US, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> poverty, <span class="at">fill =</span> religion)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p03_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672" />
+Above is a bar plot that graphs responses to the poverty question with
+faceting for whether or not the respondents were religious. As we can
+see, there is no clear skewing of the data based on gender as all
+participants, regardless of gender were split over poverty responses.
+Though similar to the degree variable, most participants are religous
+but we do not see any effects regarding the responses to the poverty
+question.</p>
+<p>As the three demographics above were categorical, we are unable to
+produce the same visualization for the continuous variable of age.
+Therefore, a histogram will be used to depict this variable and its
+effect on the poverty responses.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>WVS_US <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> WVS_US, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">fill =</span> poverty)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+<p><img src="p03_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" />
+This distribution above plots the age of respondents and their
+respective response to the poverty question. Though there are simply
+more responses for individuals under the age of 50, we are able to see a
+slight trend in responses due to the variale of age. Younger individuals
+appear to respond more that the government is doing “Too Little” for the
+poverty issue while older individuals appear to answer that the
+government is doing “Too Much” for the poverty issue.</p>
 </div>
 <div id="the-interpretation" class="section level3">
 <h3>The Interpretation</h3>
+<p>The United States in general does appear to stray slightly from the
+general trend found among all four countries as the majority of
+responses are found within the two extremes of the question. Most people
+either think the United States government is doing “Too Little” or “Too
+Much” regarding the poverty issue but less participants think that the
+government is doing “Just Right” which is the second highest response
+across all four countries.</p>
+<p>When we begin to consider the other four variables included in this
+data set, I hoped that I would see trends and patterns among certain
+variables and the responses. Although, the three categorical variables
+of gender, degree, and religion did not produce any effects on the
+response variable and retained a relatively even distribution across all
+responses. On the other hand, the continuous variable of age did produce
+some effect on the poverty responses as it seems more of the younger
+participants (below age 50) were more likely to respond that the
+government was doing “Too Little” whereas the older participants (above
+age 50) were more likely to respond that the government was doing “Too
+Much”.</p>
+<p>These findings are very interesting as we begin to think about the
+reasons behind age effects and what this means for public opinion in the
+United States. I look forward to taking these findings forward in
+portfolio pieces to come.</p>
 </div>
 
 
