@@ -16,7 +16,7 @@
 <script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -30,8 +30,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -42,18 +40,111 @@
   ul.task-list{list-style: none;}
     </style>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
   }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
 </script>
-
-
 
 
 
@@ -269,15 +360,6 @@ $(document).ready(function () {
 <li>
   <a href="p07.html">Portfolio 7</a>
 </li>
-<li>
-  <a href="p08.html">Portfolio 8</a>
-</li>
-<li>
-  <a href="p09.html">Portfolio 9</a>
-</li>
-<li>
-  <a href="p10.html">Portfolio 10</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -295,13 +377,65 @@ $(document).ready(function () {
 </div>
 
 
-<blockquote>
-<p>The projects should be numbered consecutively (i.e., in the order in
-which you began them), and should include for each project a description
-of the goal, the product (computer program, hand graph, computer graph,
-etc.), the data, and some interpretation. Reports must be reproducible
-and of high quality in terms of writing, grammar, presentation, etc.</p>
-</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">data</span>(CES11)</span></code></pre></div>
+<div id="the-goal" class="section level3">
+<h3>The Goal</h3>
+<p>For my final two portfolio pieces, I am going to switch gears
+slightly. As we explored both public opinion in the United States, as
+well as public opinion in Australia, Norway, and Sweden, I feel it is
+time we turn to one more country, Canada. As a dual citizen of both the
+United States and Canada, I am always interested in ways to involve
+Canada into my studies, especially Canadian politics.</p>
+<p>I have come acorss a new data set, CES11, which is drawn from the
+2011 Canadian National Election Study. This study surveyed many
+variables that I will discuss in the next section but specifically asked
+individuals about their stances on banning abortion. As the previous
+portfolio pieces revolved around public opinion towards both
+presidential administrations and government poverty intervention,
+abortion is another salient issue that much of the population feels
+rather divided on.</p>
+<p>I believe this data set will produce some interesting findings. For
+this portfolio piece specifically, my goal is to create a visualization
+that answers the question: Is Canada divided on the abortion conflict or
+are there specific regions (provinces) that tend to lean more strongly
+one way over another.</p>
+</div>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>The data set, CES11, is derrived from the carData package. There are
+2231 observations and 9 variables included in this data frame. Each
+observation represents one surveyed participant. The 9 variables include
+ID, province, population, weight, gender, abortion, importance,
+education, and urban. The descriptions of each variable are listed
+below.</p>
+<p>ID: Household ID number.</p>
+<p>Province: A factor with (alphabetical) levels AB, BC, MB, NB, NL, NS,
+ON, PE, QC, SK; the sample was stratified by province.</p>
+<p>Population: Population of the respondent’s province, number over age
+17.</p>
+<p>Weight: Weight sample to size of population, taking into account
+unequal sampling probabilities by province and household size.</p>
+<p>Gender: A factor with levels Female, Male.</p>
+<p>Abortion: Attitude toward abortion, a factor with levels No, Yes;
+answer to the question “Should abortion be banned?”</p>
+<p>Importance: Importance of religion, a factor with (alphabetical)
+levels not, notvery, somewhat, very; answer to the question, “In your
+life, would you say that religion is very important, somewhat important,
+not very important, or not important at all?”</p>
+<p>Education: A factor with (alphabetical) levels bachelors (Bachelors
+degree), college (community college or technical school), higher
+(graduate degree), HS (high-school graduate), lessHS (less than
+high-school graduate), somePS (some post-secondary).</p>
+<p>Urban: Place of residence, a factor with levels rural, urban.</p>
+<p>Before jumping into the main question, I will first</p>
+</div>
+<div id="the-product" class="section level3">
+<h3>The Product</h3>
+</div>
+<div id="the-interpretation" class="section level3">
+<h3>The interpretation</h3>
+</div>
 
 
 
