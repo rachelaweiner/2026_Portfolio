@@ -155,6 +155,20 @@ CES11_ON <- CES11 %>%
   filter(province == "ON")
 ```
 
+```{r}
+CES11_ON %>%
+  count(abortion)
+```
+
+
+```{r}
+CES11_ON %>%
+  ggplot(aes(x = abortion)) +
+  geom_bar()
+```
+
+According to the Ontario data, 81% belive that abortion should not be banned. This aligns perfectly with the average Canadian results. 
+
 Now that I have a separate dataset with only Ontario, I will create a similar dataset with only British Columbia respondents. 
 
 ```{r}
@@ -162,3 +176,44 @@ CES11_BC <- CES11 %>%
   filter(province == "BC")
 ```
 
+```{r}
+CES11_BC %>%
+  count(abortion)
+```
+
+```{r}
+CES11_BC %>%
+  ggplot(aes(x = abortion)) +
+  geom_bar()
+```
+
+In British Columbia on the other hand, there is a greater percentage, 90%, that believe that abortion should not be banned. This is a greater majority compared to both Ontario and the average Canadian response. 
+
+I wonder why this is?
+
+```{r}
+CES11_ON %>%
+  ggplot(aes(x = abortion, fill = education)) +
+  geom_bar()
+  
+```
+
+```{r}
+CES11_BC %>%
+  ggplot(aes(x = abortion, fill = education)) +
+  geom_bar()
+```
+
+What about religion as a factor?
+
+```{r}
+CES11_ON %>%
+  ggplot(aes(x = abortion, fill = importance)) +
+  geom_bar()
+```
+
+```{r}
+CES11_BC %>%
+  ggplot(aes(x = abortion, fill = importance)) +
+  geom_bar()
+```
