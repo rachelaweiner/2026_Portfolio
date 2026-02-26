@@ -8,6 +8,7 @@ output:
 
 ```{r load_packages}
 library(carData)
+library(tidyverse)
 data(CES11)
 ```
 
@@ -41,9 +42,98 @@ Education: A factor with (alphabetical) levels bachelors (Bachelors degree), col
 
 Urban: Place of residence, a factor with levels rural, urban.
 
-Before jumping into the main question, I will first 
+Before jumping into the main question, I will first conduct some simple visualizations to visualize the general trends in the data set including who the participants are and where they are from. 
+
+```{r}
+CES11 %>%
+  count(gender)
+```
+
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = gender)) +
+  geom_bar()
+```
+
+From this simple bar plot, I am able to understand that the sample is made up of slightly more females than males in the participant pool. Out of the 2231 total particpants, 1244 of the participants are females while 987 are males. 
+
+Next I will look at where these participants are from across Canada.
+
+```{r}
+CES11 %>%
+  count(province)
+```
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = province)) +
+  geom_bar()
+```
+
+According to this data output, the majority of particpants are from the provinces of Ontario and Quebec with British Columbia the third most apparent. 
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = urban)) +
+  geom_bar()
+```
+
+Additionally, the majority of respondents are from urban areas within these listed provinces with a smaller minority from the more rural areas of Canada. 
 
 ### The Product
 
+Now let us investigate the general distribution of responsese to the main question of the National Election Study: Should abortion be banned?
+
+```{r}
+CES11 %>% 
+  count(abortion)
+```
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = abortion)) +
+  geom_bar()
+```
+
+According to this data presentation, the majority of respondents (81%) believe that abortion should not be banned while a smaller amount of respondents (19%) believe that abortion should be banned. From this study, we can understand that about 4/5 of Canada believe that abortion should not be banned.
+
+Let's take a closer look.
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = abortion, fill = province)) +
+  geom_bar()
+```
+
+Now that we have filled the responses by where the participants are from across Canada, we can gauge which provinces the respondents are from based on their answer to the abortion question.
+
+Another way to visualize this follows.
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = abortion, fill = province)) +
+  geom_bar() +
+  facet_wrap(~ province)
+```
+
+Now that we have this faceted visualization, we can more clearly isolate each province to view thier individual distributions. Based on this visual, I notice that Ontario and Quebec are similar but Quebec sees slightly more "No" responses whereas Ontario sees slightly more "Yes" responses compared to each other. This is not a huge difference but is very interesting 
+
+One final layer of visualization would be to add the urban variable that tells us whether the particpants live in urban or rural cities. 
+
+```{r}
+CES11 %>%
+  ggplot(aes(x = abortion, fill = province, color = urban)) +
+  geom_bar() +
+  facet_wrap(~ province) +
+  labs(title = "Should Abortion be Banned?",
+       subtitle = "Faceted by Province",
+       color = "urban")
+```
+
+This might have gone a little too far as the details are slightly difficult to see, but we get the idea! I finalized this data presentation using labs to add labels and colors. 
+
 ### The interpretation
+
+From these visualizations, I can gauge the general idea of Canadians that participated in the Canadian National Eleection Survey in response to main question of whether abortion should be banned. From these survey results and data analysis, I learned that the majority of Canadians belive abortion should not be banned. Specifically in Quebec and Ontario, there is a very clear majority, which was less clear in the less populated provinces. This is very interesting in understanding public opinion acorss Canada as it seems there is a general consensus across the country. 
 
