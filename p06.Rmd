@@ -189,7 +189,10 @@ CES11_BC %>%
 
 In British Columbia on the other hand, there is a greater percentage, 90%, that believe that abortion should not be banned. This is a greater majority compared to both Ontario and the average Canadian response. 
 
-I wonder why this is?
+I wonder why this is? Here I will explore the effect of both education and importance.
+
+
+Ontario:
 
 ```{r}
 CES11_ON %>%
@@ -198,13 +201,22 @@ CES11_ON %>%
   
 ```
 
+
+British Columbia: 
+
+
 ```{r}
 CES11_BC %>%
   ggplot(aes(x = abortion, fill = education)) +
   geom_bar()
 ```
 
+The two plots above visualize the abortion response faceted by level of completed education. In both provinces, it does not appear that level of education strongly correlates with abortion response as there appears to be a generally even distribution acorss both responses. 
+
 What about religion as a factor?
+
+Ontario: 
+
 
 ```{r}
 CES11_ON %>%
@@ -212,8 +224,19 @@ CES11_ON %>%
   geom_bar()
 ```
 
+British Columbia: 
+
+
 ```{r}
 CES11_BC %>%
   ggplot(aes(x = abortion, fill = importance)) +
   geom_bar()
 ```
+
+
+According to this data analysis, importance of religion does have a significant effect as almost all individuals who noted that religion was "not" important, responded that abortion should not be banned. On the other hand, religion being "very" important did not have any substanial effect. This was valid for both provinces. 
+
+
+### The Interpretation
+
+From this portfolio piece, I have learned that in cases of Ontario and British Columbia, level of completed education did not seem to have much effect on abortion stance. Although, I did find that when respondents do not feel strongly about a relgion, they generally respond that abortion should not be banned, leading me to conclude that religious importance might be an effective factor for predicting respondents answers to the abortion survey question in the Canadian National Survey.

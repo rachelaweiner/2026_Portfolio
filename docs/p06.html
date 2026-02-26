@@ -585,24 +585,49 @@ similar dataset with only British Columbia respondents.</p>
 <p>In British Columbia on the other hand, there is a greater percentage,
 90%, that believe that abortion should not be banned. This is a greater
 majority compared to both Ontario and the average Canadian response.</p>
-<p>I wonder why this is?</p>
+<p>I wonder why this is? Here I will explore the effect of both
+education and importance.</p>
+<p>Ontario:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>CES11_ON <span class="sc">%&gt;%</span></span>
 <span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion, <span class="at">fill =</span> education)) <span class="sc">+</span></span>
 <span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="p06_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672" /></p>
+<p>British Columbia:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>CES11_BC <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion, <span class="at">fill =</span> education)) <span class="sc">+</span></span>
 <span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="p06_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672" /></p>
+<p>The two plots above visualize the abortion response faceted by level
+of completed education. In both provinces, it does not appear that level
+of education strongly correlates with abortion response as there appears
+to be a generally even distribution acorss both responses.</p>
 <p>What about religion as a factor?</p>
+<p>Ontario:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>CES11_ON <span class="sc">%&gt;%</span></span>
 <span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion, <span class="at">fill =</span> importance)) <span class="sc">+</span></span>
 <span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="p06_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672" /></p>
+<p>British Columbia:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>CES11_BC <span class="sc">%&gt;%</span></span>
 <span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion, <span class="at">fill =</span> importance)) <span class="sc">+</span></span>
 <span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="p06_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" /></p>
+<p>According to this data analysis, importance of religion does have a
+significant effect as almost all individuals who noted that religion was
+“not” important, responded that abortion should not be banned. On the
+other hand, religion being “very” important did not have any substanial
+effect. This was valid for both provinces.</p>
+</div>
+<div id="the-interpretation" class="section level3">
+<h3>The Interpretation</h3>
+<p>From this portfolio piece, I have learned that in cases of Ontario
+and British Columbia, level of completed education did not seem to have
+much effect on abortion stance. Although, I did find that when
+respondents do not feel strongly about a relgion, they generally respond
+that abortion should not be banned, leading me to conclude that
+religious importance might be an effective factor for predicting
+respondents answers to the abortion survey question in the Canadian
+National Survey.</p>
 </div>
 
 
