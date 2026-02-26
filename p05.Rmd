@@ -16,7 +16,7 @@ data(CES11)
 
 For my final two portfolio pieces, I am going to switch gears slightly. As we explored both public opinion in the United States, as well as public opinion in Australia, Norway, and Sweden, I feel it is time we turn to one more country, Canada. As a dual citizen of both the United States and Canada, I am always interested in ways to involve Canada into my studies, especially Canadian politics. 
 
-I have come acorss a new data set, CES11, which is drawn from the 2011 Canadian National Election Study. This study surveyed many variables that I will discuss in the next section but specifically asked individuals about their stances on banning abortion. As the previous portfolio pieces revolved around public opinion towards both presidential administrations and government poverty intervention, abortion is another salient issue that much of the population feels rather divided on. 
+I have come across a new data set, CES11, which is drawn from the 2011 Canadian National Election Study. This study surveyed many variables that I will discuss in the next section but specifically asked individuals about their stances on banning abortion. As the previous portfolio pieces revolved around public opinion towards both presidential administrations and government poverty intervention, abortion is another salient issue that much of the population feels rather divided on. 
 
 I believe this data set will produce some interesting findings. For this portfolio piece specifically, my goal is to create a visualization that answers the question: Is Canada divided on the abortion conflict or are there specific regions (provinces) that tend to lean more strongly one way over another. 
 
@@ -135,5 +135,5 @@ This might have gone a little too far as the details are slightly difficult to s
 
 ### The interpretation
 
-From these visualizations, I can gauge the general idea of Canadians that participated in the Canadian National Eleection Survey in response to main question of whether abortion should be banned. From these survey results and data analysis, I learned that the majority of Canadians belive abortion should not be banned. Specifically in Quebec and Ontario, there is a very clear majority, which was less clear in the less populated provinces. This is very interesting in understanding public opinion acorss Canada as it seems there is a general consensus across the country. 
+From these visualizations, I can gauge the general idea of Canadians that participated in the Canadian National Eleection Survey in response to main question of whether abortion should be banned. From these survey results and data analysis, I learned that the majority of Canadians believe abortion should not be banned. Specifically in Quebec and Ontario, there is a very clear majority, which was less clear in the less populated provinces. This is very interesting in understanding public opinion acorss Canada as it seems there is a general consensus across the country. 
 

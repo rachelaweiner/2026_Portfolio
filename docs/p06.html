@@ -16,7 +16,7 @@
 <script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -30,8 +30,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -42,18 +40,111 @@
   ul.task-list{list-style: none;}
     </style>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
   }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
 </script>
-
-
 
 
 
@@ -266,18 +357,6 @@ $(document).ready(function () {
 <li>
   <a href="p06.html">Portfolio 6</a>
 </li>
-<li>
-  <a href="p07.html">Portfolio 7</a>
-</li>
-<li>
-  <a href="p08.html">Portfolio 8</a>
-</li>
-<li>
-  <a href="p09.html">Portfolio 9</a>
-</li>
-<li>
-  <a href="p10.html">Portfolio 10</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -295,13 +374,195 @@ $(document).ready(function () {
 </div>
 
 
-<blockquote>
-<p>The projects should be numbered consecutively (i.e., in the order in
-which you began them), and should include for each project a description
-of the goal, the product (computer program, hand graph, computer graph,
-etc.), the data, and some interpretation. Reports must be reproducible
-and of high quality in terms of writing, grammar, presentation, etc.</p>
-</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(carData)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.2.0     ✔ readr     2.1.6
+## ✔ forcats   1.0.1     ✔ stringr   1.6.0
+## ✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+## ✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+## ✔ purrr     1.2.1     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">data</span>(CES11)</span></code></pre></div>
+<div id="the-goal" class="section level3">
+<h3>The Goal</h3>
+<p>For my final portfolio piece, I am going to build off of the previous
+portfolio piece on the Canadian National Election Study.</p>
+<p>The selected data set, CES11, is derived from survey results
+regarding Canadian stances on banning abortion. As the previous
+portfolio pieces revolved around public opinion towards both
+presidential administrations and government poverty intervention,
+abortion is another salient issue that much of the population feels
+rather divided on.</p>
+<p>As the last portfolio piece found the general distribution across
+Canada in regard to specific provinces and urban/rural cities, this
+portfolio piece will dive deeper. I am now interested other variables of
+this data set relating to importance and education which correspond to
+how strongly individuals feel towards their religion as well as their
+level of completed education</p>
+<p>The goal of this final portfolio piece is to combine many skills
+learned in this data course and to answer some final questions I have
+regarding this data set. First, I want to provide some data
+visualization of the importance and education variables within the
+conversation of abortion stances. Secondly, I would like to single out
+Ontario and British Columbia specifically as this is where the majority
+of my family lives. I will conduct some data analysis on these new
+datasets to finalize this portfolio.</p>
+</div>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>The data set, CES11, is derived from the carData package. There are
+2231 observations and 9 variables included in this data frame. Each
+observation represents one surveyed participant. The 9 variables include
+ID, province, population, weight, gender, abortion, importance,
+education, and urban. The descriptions of each variable are listed
+below.</p>
+<p>ID: Household ID number.</p>
+<p>Province: A factor with (alphabetical) levels AB, BC, MB, NB, NL, NS,
+ON, PE, QC, SK; the sample was stratified by province.</p>
+<p>Population: Population of the respondent’s province, number over age
+17.</p>
+<p>Weight: Weight sample to size of population, taking into account
+unequal sampling probabilities by province and household size.</p>
+<p>Gender: A factor with levels Female, Male.</p>
+<p>Abortion: Attitude toward abortion, a factor with levels No, Yes;
+answer to the question “Should abortion be banned?”</p>
+<p>Importance: Importance of religion, a factor with (alphabetical)
+levels not, notvery, somewhat, very; answer to the question, “In your
+life, would you say that religion is very important, somewhat important,
+not very important, or not important at all?”</p>
+<p>Education: A factor with (alphabetical) levels bachelors (Bachelors
+degree), college (community college or technical school), higher
+(graduate degree), HS (high-school graduate), lessHS (less than
+high-school graduate), somePS (some post-secondary).</p>
+<p>Urban: Place of residence, a factor with levels rural, urban.</p>
+<div id="portfolio-piece-5-recap" class="section level5">
+<h5>Portfolio Piece 5 Recap:</h5>
+<p>Before I jump back in, here is what we learned from Portfolio 5.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">count</span>(gender)</span></code></pre></div>
+<pre><code>##   gender    n
+## 1 Female 1244
+## 2   Male  987</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gender)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
+<p>From this simple bar plot, I am able to understand that the sample is
+made up of slightly more females than males in the participant pool. Out
+of the 2231 total participants, 1244 of the participants are females
+while 987 are males.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">count</span>(province)</span></code></pre></div>
+<pre><code>##    province   n
+## 1        AB 106
+## 2        BC 252
+## 3        MB 112
+## 4        NB  72
+## 5        NL  75
+## 6        NS  81
+## 7        ON 687
+## 8        PE  87
+## 9        QC 652
+## 10       SK 107</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> province)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
+<p>According to this data output, the majority of particpants are from
+the provinces of Ontario and Quebec with British Columbia the third most
+apparent.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> urban)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" /></p>
+<p>Additionally, the majority of respondents are from urban areas within
+these listed provinces with a smaller minority from the more rural areas
+of Canada.</p>
+<p>In regards to the abortion question:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">count</span>(abortion)</span></code></pre></div>
+<pre><code>##   abortion    n
+## 1       No 1818
+## 2      Yes  413</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" /></p>
+<p>According to this data presentation, the majority of respondents
+(81%) believe that abortion should not be banned while a smaller amount
+of respondents (19%) believe that abortion should be banned. From this
+study, we can understand that about 4/5 of Canada believe that abortion
+should not be banned.</p>
+<p>A greater look:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion, <span class="at">fill =</span> province)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
+<p>And finally:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> abortion, <span class="at">fill =</span> province, <span class="at">color =</span> urban)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> province) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Should Abortion be Banned?&quot;</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Faceted by Province&quot;</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;urban&quot;</span>)</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" />
+From Portfolio Piece 5, we learned that Ontario and Quebec make up the
+majority of respondents. Additionally, the majority of Canada (81%)
+belive abortion should not be banned and this was apparent in each of
+the 10 provinces.</p>
+</div>
+</div>
+<div id="the-product" class="section level3">
+<h3>The Product</h3>
+<p>Now for the curent portfolio, I will first investigate the two
+variables that we have not addressed yet.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">count</span>(importance)</span></code></pre></div>
+<pre><code>##   importance   n
+## 1        not 607
+## 2    notvery 315
+## 3   somewhat 714
+## 4       very 595</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> importance))<span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
+<p>While the greatest majority of respondents feel somewhat strongly
+about their religion, the second highest majority felt that their
+religion was not very important to them.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">count</span>(education)</span></code></pre></div>
+<pre><code>##   education   n
+## 1 bachelors 506
+## 2   college 491
+## 3    higher 246
+## 4        HS 467
+## 5    lessHS 267
+## 6    somePS 254</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> education))<span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="p06_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672" /></p>
+<p>The majority of respondents have completed at least a high school
+degree and a large percentage have completed a college degree and/or a
+bachelors degree.</p>
+<p>For the second goal, I want to filter this dataset so that I can
+isolate the provinces of Ontario and British Colombia. My mothers side
+of the family is from and lives in Ontario while most of my fathers side
+lives in British Colombia. It will be interesting to see how these
+provinces, on opposite sides of the country, differ.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>CES11_ON <span class="ot">&lt;-</span> CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">filter</span>(province <span class="sc">==</span> <span class="st">&quot;ON&quot;</span>)</span></code></pre></div>
+<p>Now that I have a separate dataset with only Ontario, I will create a
+similar dataset with only British Columbia respondents.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>CES11_BC <span class="ot">&lt;-</span> CES11 <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">filter</span>(province <span class="sc">==</span> <span class="st">&quot;BC&quot;</span>)</span></code></pre></div>
+</div>
 
 
 
