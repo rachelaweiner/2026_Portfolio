@@ -240,3 +240,5 @@ According to this data analysis, importance of religion does have a significant 
 ### The Interpretation
 
 From this portfolio piece, I have learned that in cases of Ontario and British Columbia, level of completed education did not seem to have much effect on abortion stance. Although, I did find that when respondents do not feel strongly about a relgion, they generally respond that abortion should not be banned, leading me to conclude that religious importance might be an effective factor for predicting respondents answers to the abortion survey question in the Canadian National Survey.
+
+Over the course of this portfolio, I have explore three different data sets. Each with their own variables, background, and particpants, I have gotten to take a closer look at issues that are important to me. With interests in both psychology and political science, I have appreciated the opportunity to merge my acadmemic interets in a space where I could experiment and learn. Thank you for your time!
