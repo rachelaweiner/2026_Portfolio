@@ -134,6 +134,7 @@ This data set contains 1003 responses each representing a Swedish participant.
   ggplot(data = WVS_SW, mapping = aes(x = poverty)) +
   geom_bar()
 ```
+
 The general trend apparent in Swedish participant responses to the poverty question resembles the general distribution of all four countries, only slightly more extreme as there are significantly fewer responses for the "too much" option. 
 
 Finally, I would like to build a visualization of the average responses, faceted by country so that we can interpret trends in data and patterns among different countries. I will add cosmetic design to enhance the visual. 
